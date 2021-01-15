@@ -14,6 +14,6 @@ public class Main {
 		}
 		PhoneDirectory dir = new PhoneDirectory("DirectoryName1", subscribers);
 		System.out.println(dir.toString());
-		System.out.println(dir.getSubscribersByName("name1"));
+		dir.printSubscribersByName("name1");
 	}
 }

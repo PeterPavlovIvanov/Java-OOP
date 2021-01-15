@@ -26,6 +26,14 @@ public class PhoneDirectory implements PhoneWriter {
 		return equalNames;
 	}
 	
+	//prints a list of subscribers with whose names are equal to the given with the interface
+	public void printSubscribersByName(String subscriberName) {
+		PhoneDirectory pd = new PhoneDirectory("Subscribers:"+subscriberName, this.getSubscribersByName(subscriberName));
+		List<PhoneDirectory> ls = new ArrayList<>();
+		ls.add(pd);
+		writeData(ls);
+	}
+	
 	//prints on the console data about the given list of directories
 	@Override
 	public void writeData(List toWrite) {
