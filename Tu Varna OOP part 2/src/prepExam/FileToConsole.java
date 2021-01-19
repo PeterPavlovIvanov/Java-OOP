@@ -8,7 +8,7 @@ class FileToConsole implements PhoneWriter {
 	private String fileName;
 	
 	//Constructor by fileName
-	FileToConsole(String fileName){
+	public FileToConsole(String fileName){
 		this.fileName = fileName;
 	}
 	

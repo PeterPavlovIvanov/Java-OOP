@@ -6,7 +6,7 @@ class Subscriber implements Comparable {
 	private String number;
 	
 	//Constructor by parameters
-	Subscriber(String name, String number){
+	public Subscriber(String name, String number){
 		this.name = name;
 		this.number = number;
 	}
@@ -14,7 +14,7 @@ class Subscriber implements Comparable {
 	//checks for equal objects
 	@Override
 	public boolean equals(Object o) {
-		if(this.name == ((Subscriber) o).getName() && this.number == ((Subscriber) o).getNumber()) {
+		if(this.name.equals(((Subscriber) o).getName()) && this.number.equals(((Subscriber) o).getNumber())) {
 			return true;
 		}
 		return false;
@@ -29,15 +29,8 @@ class Subscriber implements Comparable {
 	//Compares Subscribers
 	@Override
 	public int compareTo(Object o) {
-		double n1 = Double.parseDouble(this.number);
-		double n2 = Double.parseDouble(((Subscriber) o).getNumber());
-		if(n1 == n2) {
-			return 0;
-		}else if(n1 > n2) {
-			return 1;
-		}else {
-			return -1;
-		}
+		String oNum = ((Subscriber)o).getNumber();
+		return this.number.compareTo(oNum);
 	}
 
 	

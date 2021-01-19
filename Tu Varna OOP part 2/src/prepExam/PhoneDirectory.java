@@ -3,14 +3,16 @@ package prepExam;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhoneDirectory implements PhoneWriter {
+public class PhoneDirectory {
 	private String directoryName;
 	private List<Subscriber> subscribers;
+	PhoneWriter pw;
 	
-	//constructor by parametes
-	PhoneDirectory(String directoryName, List<Subscriber> subscribers){
+	//constructor by parameters
+	PhoneDirectory(String directoryName, List<Subscriber> subscribers, PhoneWriter pw){
 		this.directoryName = directoryName;
 		this.subscribers = subscribers;
+		this.pw = pw;
 	}
 	
 	//returns a list of subscribers with whose names are equal to the given
@@ -26,21 +28,9 @@ public class PhoneDirectory implements PhoneWriter {
 		return equalNames;
 	}
 	
-	//prints a list of subscribers with whose names are equal to the given with the interface
-	public void printSubscribersByName(String subscriberName) {
-		PhoneDirectory pd = new PhoneDirectory("Subscribers:"+subscriberName, this.getSubscribersByName(subscriberName));
-		List<PhoneDirectory> ls = new ArrayList<>();
-		ls.add(pd);
-		writeData(ls);
-	}
-	
-	//prints on the console data about the given list of directories
-	@Override
-	public void writeData(List toWrite) {
-		for(int i = 0; i < toWrite.size(); i++) {
-			PhoneDirectory pd = (PhoneDirectory) toWrite.get(i);
-			System.out.print(pd.toString());
-		}
+	//prints a list of subscribers whose names are equal to the given with the interface
+	public void writeDataToFile(String subscriberName) {
+		pw.writeData(getSubscribersByName(subscriberName));
 	}
 	
 	//converts directory to String
